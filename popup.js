@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
   });
 });
-
+ 
 async function factCheckText(text) {
   const apiKey = 'AIzaSyDPLtJg_A9eKCR1UAbe_tK-Xroz5It5X6g';
   const geminiEndpoint = 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent';
