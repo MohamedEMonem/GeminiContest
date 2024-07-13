@@ -59,7 +59,11 @@ async function factCheckText(text) {
       document.getElementById('result').innerText = 'Error during fact checking. Please try again later.';
   }
 }
+
 // dasdsadasdasdasddsadfsadf
+
 // dasdsadasdasdasddsadfsadf
+
 // dasdsadasdasdasddsadfsadf
+
 // dasdsadasdasdasddsadfsadf
