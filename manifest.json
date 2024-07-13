@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Fact Check with Gemini",
+  "version": "1.0",
+  "description": "Highlight text and use Gemini API to fact-check via Google Search.",
+  "permissions": ["contextMenus", "activeTab", "scripting",  "storage"],
+  "host_permissions": ["https://*.googleapis.com/*", "https://*.gemini.com/*", "https://*.generativelanguage.googleapis.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "hello_extensions.png"
+  },
+  "icons": {
+    "16": "hello_extensions.png"
+  }
+}
+
