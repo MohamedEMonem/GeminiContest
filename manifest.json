@@ -10,10 +10,10 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "hello_extensions.png"
+    "default_icon": "logo.png"
   },
   "icons": {
-    "16": "hello_extensions.png"
+    "16": "logo.png"
   }
 }
 
