@@ -26,6 +26,11 @@ function getSelectedText() {
 
 function fetchFactCheck(text) {
   chrome.storage.local.set({ factCheckText: text }, () => {
-    chrome.tabs.create({ url: chrome.runtime.getURL("popup.html") });
+    chrome.windows.create({
+      url: chrome.runtime.getURL("popup.html"),
+      type: "popup",
+      width: 600,
+      height: 400
+    });
   });
 }
