@@ -59,7 +59,7 @@
   
   body {
     background: linear-gradient(to right, #44e1b5, #2093c1);
-    color: #ffffff;
+    /* color: #ffffff; */
   }
   
   .title
@@ -68,5 +68,5 @@ text-align: center;
   }
   .typed-result
   {
-    font-size:xx-large;
+    font-size:medium;
   }
