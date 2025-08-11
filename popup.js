@@ -16,9 +16,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+async function loadEnvConfig() {
+    try {
+        const response = await fetch('.env');
+        const text = await response.text();
+        const config = {};
+        text.split('\n').forEach(line => {
+            const [key, value] = line.split('=');
+            if (key && value) {
+                config[key.trim()] = value.trim().replace(/["']/g, '');
+            }
+        });
+        return config;
+    } catch (error) {
+        console.error('Error loading .env file:', error);
+        return {};
+    }
+}
+
 async function factCheckText(text) {
-    const apiKey = 'AIzaSyDPLtJg_A9eKCR1UAbe_tK-Xroz5It5X6g';
-    const geminiEndpoint = 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent';
+    const config = await loadEnvConfig();
+    const apiKey = config.APIKEY;
+    const geminiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
     try {
         const factCheckResponse = await fetch(geminiEndpoint, {
@@ -31,7 +50,7 @@ async function factCheckText(text) {
                 contents: [
                     {
                         role: "user",
-                        parts: [{ text: `Fact-check the following statement using google search by only responding with less than 100 characters: ${text}` }]
+                        parts: [{ text: `Fact-check the following statement using google search by only responding with less than 300 characters: ${text}` }]
                     }
                 ]
             })
@@ -55,7 +74,7 @@ async function factCheckText(text) {
         }, 20); // Replace 2000 with your actual delay or remove if not needed
 
         // Check if response data structure is as expected
-        if (factCheckData.candidates && factCheckData.candidates.length > 0 && factCheckData.candidates[0].content && factCheckData.candidates[0].content.parts && factCheckData.candidates[0].content.parts.length > 0 && factCheckData.candidates[0].content.parts[0].text) {
+        if (factCheckData.candidates && factCheckData.candidates[0] && factCheckData.candidates[0].content && factCheckData.candidates[0].content.parts && factCheckData.candidates[0].content.parts[0].text) {
             document.getElementById('result').innerText = factCheckData.candidates[0].content.parts[0].text.trim();
         } else {
             console.error('No valid fact-check response received or empty choices array.', factCheckData);
