@@ -1,23 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fact Check</title>
+  <title>FactCheck Pro</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="popup-fix.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-  <h1 class="title">Fact Check Result</h1>
-  <div class="loader">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-section">
+          <i class="fas fa-shield-check logo-icon"></i>
+          <h1 class="app-title">FactCheck Pro</h1>
+        </div>
+        <button class="settings-btn" id="settingsBtn" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Input Section -->
+      <section class="input-section">
+        <div class="input-group">
+          <label for="textInput" class="input-label">
+            <i class="fas fa-search"></i>
+            Enter text to fact-check
+          </label>
+          <textarea 
+            id="textInput" 
+            class="text-input" 
+            placeholder="Paste or type the statement you want to verify..."
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="button-group">
+          <button id="factCheckBtn" class="primary-btn">
+            <i class="fas fa-search"></i>
+            Fact Check
+          </button>
+          <button id="clearBtn" class="secondary-btn">
+            <i class="fas fa-times"></i>
+            Clear
+          </button>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section class="results-section" id="resultsSection">
+        <!-- Loading State -->
+        <div class="loading-state" id="loadingState">
+          <div class="spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+          </div>
+          <p class="loading-text">Analyzing claim...</p>
+          <div class="progress-steps">
+            <div class="step active" data-step="1">
+              <i class="fas fa-search"></i>
+              <span>Searching databases</span>
+            </div>
+            <div class="step" data-step="2">
+              <i class="fas fa-brain"></i>
+              <span>AI Analysis</span>
+            </div>
+            <div class="step" data-step="3">
+              <i class="fas fa-check-circle"></i>
+              <span>Verification</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Content -->
+        <div class="results-content" id="resultsContent">
+          <!-- Credibility Score -->
+          <div class="credibility-score" id="credibilityScore">
+            <div class="score-header">
+              <h3>Credibility Assessment</h3>
+              <div class="score-circle" id="scoreCircle">
+                <span class="score-value" id="scoreValue">--</span>
+                <span class="score-max">/100</span>
+              </div>
+            </div>
+            <div class="score-label" id="scoreLabel">Not Analyzed</div>
+          </div>
+
+          <!-- Fact Check Results -->
+          <div class="fact-check-result" id="factCheckResult">
+            <h3 class="result-title">
+              <i class="fas fa-info-circle"></i>
+              Analysis Result
+            </h3>
+            <div class="result-content" id="resultContent">
+              Select text on any webpage or enter text above to begin fact-checking.
+            </div>
+          </div>
+
+          <!-- Sources -->
+          <div class="sources-section" id="sourcesSection">
+            <h3 class="sources-title">
+              <i class="fas fa-link"></i>
+              Verified Sources
+            </h3>
+            <div class="sources-list" id="sourcesList">
+              <!-- Sources will be populated here -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons" id="actionButtons">
+            <button class="action-btn share-btn" id="shareBtn">
+              <i class="fas fa-share-alt"></i>
+              Share Result
+            </button>
+            <button class="action-btn save-btn" id="saveBtn">
+              <i class="fas fa-bookmark"></i>
+              Save
+            </button>
+            <button class="action-btn report-btn" id="reportBtn">
+              <i class="fas fa-flag"></i>
+              Report Issue
+            </button>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" id="errorState">
+          <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h3 class="error-title">Analysis Failed</h3>
+          <p class="error-message" id="errorMessage">
+            Unable to complete fact-check. Please try again.
+          </p>
+          <button class="retry-btn" id="retryBtn">
+            <i class="fas fa-redo"></i>
+            Try Again
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <button class="footer-link" id="historyBtn">
+          <i class="fas fa-history"></i>
+          History
+        </button>
+        <button class="footer-link" id="aboutBtn">
+          <i class="fas fa-info"></i>
+          About
+        </button>
+        <button class="footer-link" id="helpBtn">
+          <i class="fas fa-question-circle"></i>
+          Help
+        </button>
+      </div>
+      <div class="version-info">
+        <span>v2.0.0</span>
+      </div>
+    </footer>
   </div>
-  <div id="result" class="typed-result"></div>
+
   <script src="popup.js"></script>
 </body>
-
 </html>

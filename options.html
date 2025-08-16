@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FactCheck Pro - Settings</title>
+  <link rel="stylesheet" href="options.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-section">
+          <i class="fas fa-shield-check logo-icon"></i>
+          <div>
+            <h1 class="app-title">FactCheck Pro</h1>
+            <p class="app-subtitle">Settings & Configuration</p>
+          </div>
+        </div>
+        <div class="version-badge">v2.0.0</div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+      <button class="nav-item active" data-section="api">
+        <i class="fas fa-key"></i>
+        API Configuration
+      </button>
+      <button class="nav-item" data-section="analysis">
+        <i class="fas fa-brain"></i>
+        Analysis Settings
+      </button>
+      <button class="nav-item" data-section="interface">
+        <i class="fas fa-palette"></i>
+        Interface
+      </button>
+      <button class="nav-item" data-section="privacy">
+        <i class="fas fa-shield-alt"></i>
+        Privacy & Data
+      </button>
+      <button class="nav-item" data-section="about">
+        <i class="fas fa-info-circle"></i>
+        About
+      </button>
+    </nav>
+
+    <!-- Content -->
+    <main class="main-content">
+      <!-- API Configuration Section -->
+      <section class="settings-section active" id="api-section">
+        <div class="section-header">
+          <h2>API Configuration</h2>
+          <p>Configure your API keys for enhanced fact-checking capabilities</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-robot"></i>
+              Google Gemini API Key
+              <span class="required">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="password" id="geminiApiKey" class="setting-input" 
+                     placeholder="Enter your Gemini API key...">
+              <button class="toggle-visibility" data-target="geminiApiKey">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <p class="setting-description">
+              Required for AI-powered fact checking. 
+              <a href="https://makersuite.google.com/app/apikey" target="_blank">Get your API key</a>
+            </p>
+          </div>
+
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-search"></i>
+              Google Fact Check Tools API Key
+            </label>
+            <div class="input-wrapper">
+              <input type="password" id="factCheckApiKey" class="setting-input" 
+                     placeholder="Enter your Fact Check API key...">
+              <button class="toggle-visibility" data-target="factCheckApiKey">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <p class="setting-description">
+              Optional. Enables access to verified fact-check databases. 
+              <a href="https://developers.google.com/fact-check/tools/api" target="_blank">Learn more</a>
+            </p>
+          </div>
+
+          <div class="api-status" id="apiStatus">
+            <div class="status-item">
+              <span class="status-label">Gemini API:</span>
+              <span class="status-indicator" id="geminiStatus">Not configured</span>
+            </div>
+            <div class="status-item">
+              <span class="status-label">Fact Check API:</span>
+              <span class="status-indicator" id="factCheckStatus">Not configured</span>
+            </div>
+          </div>
+
+          <button class="test-apis-btn" id="testApisBtn">
+            <i class="fas fa-flask"></i>
+            Test API Connections
+          </button>
+        </div>
+      </section>
+
+      <!-- Analysis Settings Section -->
+      <section class="settings-section" id="analysis-section">
+        <div class="section-header">
+          <h2>Analysis Settings</h2>
+          <p>Customize how FactCheck Pro analyzes and presents information</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-gauge"></i>
+              Default Analysis Depth
+            </label>
+            <select id="analysisDepth" class="setting-select">
+              <option value="quick">Quick Check (Fast, basic verification)</option>
+              <option value="standard" selected>Standard Analysis (Balanced speed and depth)</option>
+              <option value="deep">Deep Analysis (Comprehensive, slower)</option>
+            </select>
+            <p class="setting-description">
+              Controls the thoroughness of fact-checking analysis
+            </p>
+          </div>
+
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-percentage"></i>
+              Credibility Threshold
+            </label>
+            <div class="range-input">
+              <input type="range" id="credibilityThreshold" min="0" max="100" value="70" class="setting-range">
+              <span class="range-value" id="thresholdValue">70</span>%
+            </div>
+            <p class="setting-description">
+              Minimum credibility score to consider a claim as likely true
+            </p>
+          </div>
+
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="autoFactCheck" class="setting-checkbox">
+              <label for="autoFactCheck" class="checkbox-label">
+                <i class="fas fa-bolt"></i>
+                Auto-start fact checking when text is selected
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="enablePageAnalysis" class="setting-checkbox" checked>
+              <label for="enablePageAnalysis" class="checkbox-label">
+                <i class="fas fa-file-alt"></i>
+                Enable full page analysis
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="enableNotifications" class="setting-checkbox" checked>
+              <label for="enableNotifications" class="checkbox-label">
+                <i class="fas fa-bell"></i>
+                Show notifications for completed analyses
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interface Section -->
+      <section class="settings-section" id="interface-section">
+        <div class="section-header">
+          <h2>Interface & Experience</h2>
+          <p>Customize the look and behavior of FactCheck Pro</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-palette"></i>
+              Theme
+            </label>
+            <select id="theme" class="setting-select">
+              <option value="auto">Auto (Follow system)</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="enableKeyboardShortcuts" class="setting-checkbox" checked>
+              <label for="enableKeyboardShortcuts" class="checkbox-label">
+                <i class="fas fa-keyboard"></i>
+                Enable keyboard shortcuts
+              </label>
+            </div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item">
+                <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>
+                <span>Fact-check selected text</span>
+              </div>
+              <div class="shortcut-item">
+                <kbd>Esc</kbd>
+                <span>Clear highlights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="showInlineResults" class="setting-checkbox" checked>
+              <label for="showInlineResults" class="checkbox-label">
+                <i class="fas fa-comment"></i>
+                Show inline results on web pages
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-clock"></i>
+              Highlight Duration (seconds)
+            </label>
+            <div class="range-input">
+              <input type="range" id="highlightDuration" min="5" max="30" value="15" class="setting-range">
+              <span class="range-value" id="highlightValue">15</span>s
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy & Data Section -->
+      <section class="settings-section" id="privacy-section">
+        <div class="section-header">
+          <h2>Privacy & Data Management</h2>
+          <p>Control how your data is stored and used</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="saveHistory" class="setting-checkbox" checked>
+              <label for="saveHistory" class="checkbox-label">
+                <i class="fas fa-history"></i>
+                Save fact-check history locally
+              </label>
+            </div>
+            <p class="setting-description">
+              History is stored locally on your device and never shared
+            </p>
+          </div>
+
+          <div class="setting-item">
+            <label class="setting-label">
+              <i class="fas fa-database"></i>
+              Maximum History Items
+            </label>
+            <select id="maxHistoryItems" class="setting-select">
+              <option value="50">50 items</option>
+              <option value="100" selected>100 items</option>
+              <option value="200">200 items</option>
+              <option value="500">500 items</option>
+            </select>
+          </div>
+
+          <div class="data-management">
+            <h3>Data Management</h3>
+            <div class="data-actions">
+              <button class="data-btn export-btn" id="exportDataBtn">
+                <i class="fas fa-download"></i>
+                Export Data
+              </button>
+              <button class="data-btn clear-btn" id="clearHistoryBtn">
+                <i class="fas fa-trash"></i>
+                Clear History
+              </button>
+              <button class="data-btn reset-btn" id="resetSettingsBtn">
+                <i class="fas fa-undo"></i>
+                Reset All Settings
+              </button>
+            </div>
+          </div>
+
+          <div class="privacy-info">
+            <h3>Privacy Information</h3>
+            <ul class="privacy-list">
+              <li>Your API keys are stored locally and encrypted</li>
+              <li>Fact-check history is stored only on your device</li>
+              <li>No personal data is sent to our servers</li>
+              <li>Text analysis is performed by your configured AI services</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="settings-section" id="about-section">
+        <div class="section-header">
+          <h2>About FactCheck Pro</h2>
+          <p>Information about this extension and helpful resources</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="about-card">
+            <div class="about-header">
+              <i class="fas fa-shield-check about-icon"></i>
+              <div>
+                <h3>FactCheck Pro v2.0.0</h3>
+                <p>Professional AI-Powered Fact Checking</p>
+              </div>
+            </div>
+            <div class="about-content">
+              <p>
+                FactCheck Pro combines the power of Google's Gemini AI with verified fact-checking 
+                databases to provide accurate, credible information verification directly in your browser.
+              </p>
+            </div>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <i class="fas fa-robot"></i>
+              <h4>AI-Powered Analysis</h4>
+              <p>Advanced language models for comprehensive fact verification</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-database"></i>
+              <h4>Verified Sources</h4>
+              <p>Integration with Google's Fact Check Tools database</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-gauge"></i>
+              <h4>Credibility Scoring</h4>
+              <p>Numerical confidence ratings for every analysis</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Privacy First</h4>
+              <p>All data stored locally, no tracking or data collection</p>
+            </div>
+          </div>
+
+          <div class="links-section">
+            <h3>Resources & Support</h3>
+            <div class="resource-links">
+              <a href="https://github.com/yourrepo/factcheck-pro" target="_blank" class="resource-link">
+                <i class="fab fa-github"></i>
+                View on GitHub
+              </a>
+              <a href="https://github.com/yourrepo/factcheck-pro/wiki" target="_blank" class="resource-link">
+                <i class="fas fa-book"></i>
+                Documentation
+              </a>
+              <a href="https://github.com/yourrepo/factcheck-pro/issues" target="_blank" class="resource-link">
+                <i class="fas fa-bug"></i>
+                Report Issues
+              </a>
+              <a href="mailto:support@factcheckpro.com" class="resource-link">
+                <i class="fas fa-envelope"></i>
+                Contact Support
+              </a>
+            </div>
+          </div>
+
+          <div class="credits-section">
+            <h3>Credits & Attribution</h3>
+            <ul class="credits-list">
+              <li>Powered by <strong>Google Gemini AI</strong></li>
+              <li>Fact verification via <strong>Google Fact Check Tools API</strong></li>
+              <li>Icons by <strong>Font Awesome</strong></li>
+              <li>Built with modern web technologies</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="save-status" id="saveStatus">
+        <i class="fas fa-check-circle"></i>
+        Settings saved automatically
+      </div>
+      <div class="footer-actions">
+        <button class="footer-btn" id="resetAllBtn">
+          <i class="fas fa-undo"></i>
+          Reset All
+        </button>
+        <button class="footer-btn primary" id="saveBtn">
+          <i class="fas fa-save"></i>
+          Save Changes
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p id="loadingText">Saving settings...</p>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>
