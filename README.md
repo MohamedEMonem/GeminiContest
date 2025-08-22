@@ -123,15 +123,19 @@ APIKEY=your_gemini_api_key
 5. Open a Pull Request
 
 ## 📝 License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under a **Personal Use License** - see the [LICENSE](LICENSE) file for details.
 
 **What this means:**
-- ✅ Commercial use allowed
-- ✅ Modification allowed  
-- ✅ Distribution allowed
-- ✅ Private use allowed
+- ✅ Personal use allowed
+- ✅ Educational use allowed
+- ✅ Private modification allowed
+- ❌ **No commercial use**
+- ❌ **No distribution/sharing**
+- ❌ **No publishing on marketplaces**
 - ❌ No warranty provided
 - ❌ No liability assumed
+
+**Important:** This software is for personal use only. Commercial use and distribution are strictly prohibited.
 
 ## 🔗 Links
 - [Chrome Web Store]() *(Coming Soon)*
