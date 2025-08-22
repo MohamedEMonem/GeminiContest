@@ -138,6 +138,8 @@ This project is licensed under a **Personal Use License** - see the [LICENSE](LI
 **Important:** This software is for personal use only. Commercial use and distribution are strictly prohibited.
 
 ## 🔗 Links
+- [Microsoft Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/fact-check-with-gemini/lehlphddhkgiomdkoaooflneoffjcaid?hl=en-US) - **Available Now!**
+- [Demo Video](https://www.youtube.com/watch?v=cbXvH9B60fw) - See it in action
 - [Chrome Web Store]() *(Coming Soon)*
 - [Google AI Studio](https://makersuite.google.com/)
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/)
